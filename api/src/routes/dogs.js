@@ -1,6 +1,6 @@
 // const { router } = require('express').Router();
 const { Op } = require('sequelize');
-const { Dog } = require('../db');
+const { Dog, Temperament} = require('../db');
 const axios = require('axios');
 
 
@@ -22,7 +22,7 @@ const getApiDogs = async () => {
 }
 
 const getDbDogs = async () => {
-    const dogsInfo = await Dog.findAll();
+    const dogsInfo = await Dog.findAll( {include: Temperament});
     return dogsInfo;
 }
 
@@ -36,7 +36,7 @@ const getAllDogs = async () => {
 }
 
 const getDogDB = async (name) => {
-    const dog = await Dog.findAll({where: {name: {[Op.substring]: name}}})
+    const dog = await Dog.findAll({where: {name: {[Op.substring]: name}}, include: Temperament})
     return dog;
 }
 
@@ -74,6 +74,9 @@ const addDog = async (name, image, weight, heigth, yearsOfLife, temperament) => 
         heigth,
         yearsOfLife
     })
+
+    let temperamentDB = await Temperament.findAll({where : {name : temperament}})
+    newDog.addTemperament(temperamentDB);
     return newDog;
 }
 
