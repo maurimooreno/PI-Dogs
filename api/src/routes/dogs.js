@@ -1,4 +1,4 @@
-const { router } = require('express').Router();
+// const { router } = require('express').Router();
 const { Op } = require('sequelize');
 const { Dog } = require('../db');
 const axios = require('axios');

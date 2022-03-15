@@ -3,6 +3,7 @@ const express = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const {getAllDogs, addDog, getDog} = require('../routes/dogs.js');
+const {getAllTemperaments} = require('../routes/temperament.js')
 
 
 const router = Router();
@@ -24,7 +25,7 @@ router.get('/dogs', async (req, res) => {
 router.get('/dogs/:id', async (req, res) => {
     let {id} = req.params
     let allDogs = await getAllDogs();
-    let dogsFilter = allDogs.filter(dog => dog.id === parseInt(id));
+    let dogsFilter = allDogs.filter(dog => dog.id == id);
         dogsFilter.length > 0 ? res.status(200).json(dogsFilter) : res.status(404).json({error: `El perro con ID ${id} no se existe`})
 })
 
@@ -41,6 +42,15 @@ router.post('/dog', async (req, res) => {
         }
     } catch (error) {
         return res.json(error);
+    }
+})
+
+router.get('/temperament', async (req,res) => {
+    let allTemperaments = await getAllTemperaments();
+    if(allTemperaments){
+        return res.status(200).json(allTemperaments);
+    }else{
+        return res.status(404).send('No hay temperamentos en la base de datos')
     }
 })
 module.exports = router;
