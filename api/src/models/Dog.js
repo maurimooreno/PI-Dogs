@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    heigth: {
+    height: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -25,6 +25,11 @@ module.exports = (sequelize) => {
     },
     yearsOfLife: {
       type: DataTypes.INTEGER
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: ('Img not found')
     }
   });
 };

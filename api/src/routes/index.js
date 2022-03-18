@@ -2,7 +2,7 @@ const { Router } = require('express');
 const express = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const {getAllDogs, addDog, getDog} = require('../routes/dogs.js');
+const {getAllDogs, addDog, getDog, todos} = require('../routes/dogs.js');
 const {getAllTemperaments} = require('../routes/temperament.js')
 
 
@@ -15,7 +15,7 @@ router.get('/dogs', async (req, res) => {
     let name = req.query.name;
     if(name){
         let dog = await getDog(name);
-        dog.length > 0 ? res.status(200).json(dog) : res.status(404).json({error: `El perro con nombre ${name} no se existe`})
+        dog.length > 0 ? res.status(200).json(dog) : res.status(404).json([])
     }else{
         let allDogs = await getAllDogs();
         res.status(200).json(allDogs);
@@ -30,14 +30,14 @@ router.get('/dogs/:id', async (req, res) => {
 })
 
 router.post('/dog', async (req, res) => {
-    let { name, image, weight, heigth, yearsOfLife, temperament } = req.body;
+    let { name, image, weight, height, yearsOfLife, temperament } = req.body;
     let allDogs = await getAllDogs();
     try {
         let find = allDogs.filter(dog => dog.name.toLowerCase() === name.toLowerCase());
         if(find.length > 0){
             return res.status(406).json('La raza que intentas agregar ya existe');
         }else{
-            let newDog = await addDog(name, image, weight, heigth, yearsOfLife, temperament)
+            let newDog = await addDog(name, image, weight, height, yearsOfLife, temperament)
             res.status(201).json(newDog);
         }
     } catch (error) {
