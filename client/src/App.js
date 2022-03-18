@@ -2,9 +2,10 @@ import './App.css';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 
 import Principal from './components/Principal/Principal.jsx';
-import Home from './components/Home/Home';
+import Home from './components/Home/Home.jsx';
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div className="App">

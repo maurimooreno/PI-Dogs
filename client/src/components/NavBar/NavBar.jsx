@@ -1,9 +1,12 @@
 import React from "react";
 
+import SearchBar from "../SearchBar/SearchBar";
+
 export default function NavBar(){
     return(
-        <>
-            <h1>Soy el Nav</h1>
-        </>
+        <div>
+            <img src="" alt="Soy la imagen" />
+            <SearchBar />
+        </div>
     )
 }
