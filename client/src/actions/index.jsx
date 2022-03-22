@@ -29,3 +29,24 @@ export function findDogs(payload){
         })
     }
 }
+
+export function filterByCreation(payload){
+    return {
+        type: 'FILTER_BY_CREATION',
+        payload
+    }
+}
+
+export function filterByTemperament(payload){
+    return{
+        type: 'FILTER_BY_TEMPERAMENT',
+        payload
+    }
+}
+
+export function orderBy(payload){
+    return{
+        type: 'ORDER_BY',
+        payload
+    }
+}

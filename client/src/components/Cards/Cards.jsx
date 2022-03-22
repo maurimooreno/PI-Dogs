@@ -7,10 +7,11 @@ export default function Cards({dogs}){
     return(
         <div>
         {
-            dogs && dogs.map((dog) => {
-                return(
-                    <>
+            dogs.length ? (
+                dogs.map((dog) => {
+                    return(
                         <Card
+                            key={dog.id}
                             id={dog.id}
                             name={dog.name}
                             image={dog.image}
@@ -19,9 +20,13 @@ export default function Cards({dogs}){
                             yearsOfLife={dog.yearsOfLife}
                             temperament={dog.temperament}
                         />
-                    </>  
-                )
-            })
+                    )
+                })
+            ) : (
+                <div>
+                    loading...
+                </div>
+            )
         }
         </div>
     )
