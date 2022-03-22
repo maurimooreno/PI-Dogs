@@ -16,11 +16,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     height: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.JSON,
       allowNull: false
     },
     weight: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.JSON,
       allowNull: false
     },
     yearsOfLife: {
@@ -30,6 +30,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: ('Img not found')
+    },
+    createdInDB: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   });
 };

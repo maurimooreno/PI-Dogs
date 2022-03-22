@@ -9,22 +9,21 @@ const getApiDogs = async () => {
     const dogsApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
     let dogsApiInfo =  await dogsApi.data
     dogsApiInfo =  dogsApiInfo.map(dog => {
+        
         let temp;
         if(dog.temperament !== undefined){
             temp = dog.temperament.split(/ |, |,/)
         }
-        temp = temp?.map(el => {
-            return{
-                name: el
-            }
-        })
-        
+        temp = temp?.map(t => t)
+        let peso = dog.weight.metric.split('-')
+        let altura = dog.height.metric.split('-')
+
         return {
             id: dog.id, 
             name: dog.name,
             image: dog.image.url,
-            weight: dog.weight.metric,
-            height: dog.height.metric,
+            weight: peso,
+            height: altura,
             yearsOfLife: dog.life_span,
             temperament: temp
         }
@@ -36,12 +35,7 @@ const getDbDogs = async () => {
     let dogsInfo = await Dog.findAll( {include: Temperament});
     let data = dogsInfo.map(d=> d.dataValues)
     data = data.map(d=>{
-        let temp =  d.temperaments.map(t=>{
-            return{
-                id: t.id,
-                name: t.name
-            }
-        })
+        let temp =  d.temperaments.map(t=> t.name)
         return{
             id: d.id, 
             name: d.name,
@@ -49,12 +43,12 @@ const getDbDogs = async () => {
             weight: d.weight,
             height: d.height,
             yearsOfLife: d.yearsOfLife,
+            createdInDB: d.createdInDB,
             temperament: temp
         }
     })
     return data;
 }
-
 
 const getAllDogs = async () => {
     let allDogs = []
@@ -64,68 +58,10 @@ const getAllDogs = async () => {
     return allDogs;
 }
 
-const getDogDB = async (name) => {
-    const dog = await Dog.findAll({where: {name: {[Op.substring]: name}}, include: Temperament})
-    let data = dog.map(d=> d.dataValues)
-    data = data.map(d=>{
-        let temp =  d.temperaments.map(t=>{
-            return{
-                id: t.id,
-                name: t.name
-            }
-        })
-        return{
-            id: d.id, 
-            name: d.name,
-            image: d.image,
-            weight: d.weight,
-            height: d.height,
-            yearsOfLife: d.yearsOfLife,
-            temperament: temp
-        }
-    })
-    return data;
-}
-
-const getDogApi = async (name) => {
-    const dog = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
-    let dogInfo = await dog.data
-    console.log(dogInfo)
-    dogInfo = dogInfo.map(d => d.name.includes(name))
-    dogInfo =  dogInfo.map(dog => {
-        let temp;
-        if(dog.temperament !== undefined){
-            temp = dog.temperament.split(/ |, |,/)
-        }
-        temp = temp?.map(el => {
-            return{
-                name: el
-            }
-        })
-        return {
-            id: dog.id, 
-            name: dog.name,
-            image: dog.image?.url,
-            weight: dog.weight.metric,
-            height: dog.height.metric,
-            yearsOfLife: dog.life_span,
-            temperament: temp
-        }
-    })
-    return dogInfo;
-    
-}
-
 const getDog = async (name) => {
     let findDog =  await getAllDogs();
     findDog = findDog.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
     return findDog;
-    // let dogApi = await getDogApi(name);
-    // let dogDB = await getDogDB(name);
-    // if(dogApi && dogDB) return all = dogApi.concat(dogDB)
-    // if(dogApi) return dogApi;
-    // if(dogDB) return dogDB;
-    // return [];
 }
 const addDog = async (name, image, weight, height, yearsOfLife, temperament) => {
     let newDog = await Dog.create({

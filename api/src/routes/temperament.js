@@ -7,7 +7,7 @@ const getAllTemperaments = async () => {
     let arrayTemp = allDogs.data.map(dog=> dog.temperament)
     let conversion = arrayTemp.toString();
     let allTemperaments = conversion.split(/ |,/);
-
+    
     allTemperaments.forEach( temp => {
         if(temp){
             Temperament.findOrCreate({
@@ -16,12 +16,8 @@ const getAllTemperaments = async () => {
         }
     });
     let allTempDB = await Temperament.findAll();
-    allTempDB = allTempDB.map(t=>{
-        return{
-            id: t.id,
-            name: t.name
-        }
-    })
+    allTempDB = allTempDB.map(t=> t.name)
+
     return allTempDB;
 }
 
