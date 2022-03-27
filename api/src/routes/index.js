@@ -32,16 +32,13 @@ router.get('/dogs/:id', async (req, res) => {
 router.post('/dog', async (req, res) => {
     let { name, image, weight, height, yearsOfLife, temperament } = req.body;
     let allDogs = await getAllDogs();
-    try {
-        let find = allDogs.filter(dog => dog.name.toLowerCase() === name.toLowerCase());
-        if(find.length > 0){
-            return res.status(406).json('La raza que intentas agregar ya existe');
-        }else{
-            let newDog = await addDog(name, image, weight, height, yearsOfLife, temperament)
-            res.status(201).json(newDog);
-        }
-    } catch (error) {
-        return res.json(error);
+    let find = allDogs.filter(dog => dog.name.toLowerCase() === name.toLowerCase());
+    if(find.length > 0){
+        return res.status(406).json('La raza que intentas agregar ya existe');
+    }else{
+        let newDog = await addDog(name, image, weight, height, yearsOfLife, temperament)
+        console.log(newDog)
+        return res.status(201).json(newDog);
     }
 })
 

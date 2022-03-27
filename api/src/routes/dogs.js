@@ -75,6 +75,7 @@ const addDog = async (name, image, weight, height, yearsOfLife, temperament) => 
         let temperamentDB = await Temperament.findOne({where : {name : el}})
         newDog.addTemperament(temperamentDB);
     };
+    console.log(newDog.dataValues)
     return newDog;
 }
 

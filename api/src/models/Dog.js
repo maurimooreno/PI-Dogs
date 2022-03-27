@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     yearsOfLife: {
-      type: DataTypes.INTEGER
+      type: DataTypes.JSON
     },
     image: {
       type: DataTypes.STRING,
