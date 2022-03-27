@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
+import './SearchBar.css';
+import icon_seach from '../../Assets/img/icon-search.png'
 
 import { findDogs } from "../../actions/index.jsx";
 
@@ -18,9 +20,13 @@ export default function SearchBar (){
     }
     
     return(
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={raza} onChange={handleChange} placeholder='Ingrese Raza' />
-            <button type="submit">X</button>
+        <form onSubmit={handleSubmit} className='searchBar_container'>
+            <div className='input_searchBar'>
+                <input type="text"  value={raza} onChange={handleChange} placeholder='Buscar raza' />
+            </div>
+            <div className="icon_button">
+                <input type="image" src={icon_seach} alt='img not found'/>
+            </div>
         </form>
     )
 }

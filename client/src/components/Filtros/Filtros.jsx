@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import './Filtros.css';
 
 import { filterByCreation, filterByTemperament } from '../../actions/index.jsx';
 
@@ -19,7 +20,7 @@ export default function Filtros() {
     }
 
     return(
-        <div>
+        <div className="filtros_container">
             <select onChange={handleFilterByTemperament}>
                 <option value="all">all</option>
                 {temperamentsOrdenados.map((t, i) => {

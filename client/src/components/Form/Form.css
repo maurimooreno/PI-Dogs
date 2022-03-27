@@ -1,0 +1,94 @@
+.form_container{
+    background-image: url('../../Assets/img/fondo_home.jpg');
+    width: 100%;
+    min-height: 656px;
+    display: flex;
+    flex-direction: column;
+}
+.form_body{
+    border: 2px solid rgb(199, 179, 148);
+    border-radius: 15px;
+    box-shadow: 5px 5px 50px 10px rgb(83, 80, 75);
+    min-height: 400px;
+    min-width: 600px;
+    margin: auto;
+    background-color: rgb(238, 235, 232, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form_item{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(224, 224, 224);
+    height: 45px;
+    width: 500px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+    background-color: rgb(65, 62, 60);
+    border: 2px solid rgb(216, 216, 216);
+    border-radius: 15px;
+}
+
+.form_item label{
+    margin-right: 30px;
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.form_item select{
+    background-color: transparent;
+    border: none;
+    color: rgb(224, 224, 224);
+}
+
+.title{
+    margin: auto;
+    width: 300px;
+    border-radius: 30px;
+    color: rgb(224, 224, 224);
+    background-color: rgb(65, 62, 60, 0.9);
+}
+
+.input{
+    display: flex;
+}
+.input input{
+    background-color: transparent;
+    color: rgb(224, 224, 224);
+    margin-left: 15px;
+    border: none;
+    outline: none;
+}
+
+.input input::placeholder{
+    color: rgb(224, 224, 224);
+}
+
+.form_button{
+    display: flex;
+    justify-content: space-around;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.form_button button{
+    color: rgb(224, 224, 224);
+    background-color: rgb(65, 62, 60, 0.9);
+    border-radius: 7px;
+}
+
+.form_button button:hover{
+    background-color: rgb(224, 224, 224);
+    color: rgb(65, 62, 60, 0.9);
+}
+
+.errorDanger{
+    font-size: 15px;
+    position: absolute;
+    color: azure;
+    left: 70%;
+    background-color: rgba(177, 82, 82, 0.7);
+    height: 20px;
+}

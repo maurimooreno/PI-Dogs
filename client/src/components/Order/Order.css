@@ -1,0 +1,14 @@
+.order_container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+}
+
+.order_container select{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(233, 224, 211);
+}

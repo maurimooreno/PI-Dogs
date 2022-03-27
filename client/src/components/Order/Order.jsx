@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import './Order.css'
 
 import { orderBy} from '../../actions/index.jsx';
 
@@ -13,7 +14,7 @@ export default function Order() {
     }
 
     return(
-        <div>
+        <div className="order_container">
             <select onChange={handleOrder}>
                 <option value="asc">A - Z</option>
                 <option value="desc">Z - A</option>

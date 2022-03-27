@@ -9,6 +9,8 @@ import Filtros from "../Filtros/Filtros.jsx";
 import Order from "../Order/Order.jsx";
 import Paginado from "../Paginado/Paginado.jsx";
 
+import './Home.css'
+
 export default function Home(){
 
     const dispatch = useDispatch();
@@ -88,12 +90,14 @@ export default function Home(){
     }
 
     return(
-        <div>
-        <NavBar />
-        <Filtros />
-        <Order />
-        <Paginado paginado={paginado} dogs={dogsDisplay.length} dogsPerPage={dogsPerPage}/>
-        <Cards dogs={currentDogs}/>
+        <div className='container'>
+                <NavBar />
+                <div className="options_container">
+                    <Filtros />
+                    <Order />
+                </div>
+                <Paginado paginado={paginado} dogs={dogsDisplay.length} dogsPerPage={dogsPerPage}/>
+                <Cards dogs={currentDogs}/>
         </div>
     )
 }

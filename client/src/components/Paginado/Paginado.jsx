@@ -1,4 +1,5 @@
 import React from "react";
+import './Paginado.css'
 
 export default function Paginado({paginado, dogsPerPage, dogs}){
     
@@ -8,7 +9,7 @@ export default function Paginado({paginado, dogsPerPage, dogs}){
     }
 
     return(
-        <div >
+        <div className="paginado_container">
             {page.length ? (
                 <div>
                 {page.map((num) => (

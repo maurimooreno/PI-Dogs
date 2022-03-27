@@ -20,12 +20,31 @@ export function getTemperaments(payload){
     }
 }
 
+export function addDog(payload){
+    return async function(dispatch){
+        await axios.post('http://localhost:3001/dog', payload)
+        return dispatch({
+            type: 'ADD_DOG'
+        })
+    }
+}
+
 export function findDogs(payload){
     return async function(dispatch){
         let dogs = await axios.get(`http://localhost:3001/dogs/?name=${payload}`)
         return dispatch({
             type: 'FIND_DOGS',
             payload: dogs.data
+        })
+    }
+}
+
+export function getById(payload){
+    return async function(dispatch){
+        let dog = await axios.get(`http://localhost:3001/dogs/${payload}`)
+        return dispatch({
+            type: 'GET_BY_ID',
+            payload: dog.data
         })
     }
 }

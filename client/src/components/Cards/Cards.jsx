@@ -1,19 +1,21 @@
 import React from "react";
+import './Cards.css'
+import loading from '../../Assets/img/loading.gif'
 
 import Card from "../Card/Card";
 
 export default function Cards({dogs}){
     
     return(
-        <div>
+        <div className="cards_container">
         {
-            dogs.length ? (
+            dogs.length > 1 ? (
                 dogs.map((dog) => {
                     return(
                         <Card
                             key={dog.id}
                             id={dog.id}
-                            name={dog.name}
+                            dogName={dog.name}
                             image={dog.image}
                             weight={dog.weight}
                             height={dog.height}
@@ -24,7 +26,7 @@ export default function Cards({dogs}){
                 })
             ) : (
                 <div>
-                    loading...
+                    <img src={loading} alt="loading..." />
                 </div>
             )
         }

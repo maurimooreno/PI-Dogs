@@ -23,6 +23,15 @@ export default function rootReducer (state=initialState, action) {
                 ...state,
                 dogs: action.payload
             }
+        case 'GET_BY_ID':
+            return{
+                ...state,
+                dogs: action.payload
+            }
+        case 'ADD_DOG':
+            return{
+                ...state
+            }
         case 'FILTER_BY_CREATION':
             const dogsFilteredByCreation = state.dogsFiltered;
             let filteredDogs = []

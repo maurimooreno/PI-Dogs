@@ -1,0 +1,21 @@
+.paginado_container{
+    display: flex;
+    justify-content: center;
+}
+
+.paginado_container button{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 300;
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    border: none;
+    border-radius: 100px;
+    color: antiquewhite;
+    background-color: rgb(179, 163, 133);
+}
+
+.paginado_container button:hover{
+    color: rgb(179, 163, 133);
+    background-color: antiquewhite;
+}

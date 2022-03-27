@@ -1,0 +1,36 @@
+.nav_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-right: 25px;
+}
+
+.icon_addDog{
+    margin-top: 5px;
+    height: 50px;
+}
+
+.icon_nav {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon_nav img{
+    height: 50px;
+    margin: 7px;
+    margin-left: 25px;
+}
+
+.icon_nav p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: none;
+}
