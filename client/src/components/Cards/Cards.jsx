@@ -9,7 +9,7 @@ export default function Cards({dogs}){
     return(
         <div className="cards_container">
         {
-            dogs.length > 1 ? (
+            dogs.length >= 1 ? (
                 dogs.map((dog) => {
                     return(
                         <Card

@@ -31,7 +31,7 @@ export default function CardDetail(){
                         <div key={d.id} className='cardDetail_container'>
                             <div className="cardDetail_header">
                                 <Link to={'/home'}>
-                                    <button>Back Home</button>
+                                    <button>Volver a Home</button>
                                 </Link> 
                                 <div>
                                     <h3>{d.name}</h3>
@@ -39,23 +39,31 @@ export default function CardDetail(){
                                 <img src={d.image} alt="Imagen not fount" height='200px' width='200px'/>
                             </div>
                             <div className="cardDetail_body">
-                                <div>
-                                    <p>Peso</p>
-                                    <p>Min: {weight[0]}</p>
-                                    <p>Max: {weight[1]}</p>
-                                </div>
-                                <div>
-                                    <p>Altura</p>
-                                    <p>Min: {height[0]}</p>
-                                    <p>Max: {height[1]}</p>
-                                </div>
-                                <div>
-                                    <p>Temperamentos</p>
-                                    <p>{d.temperament?.join(', ')}</p>
-                                </div>
-                                <div>
+                                <div className="cardDetail_data">
+                                    <div>
+                                        <p>Peso</p>
+                                        <p>Min: {weight[0]} kg</p>
+                                        <p>Max: {weight[1]} kg</p>
+                                    </div>
+                                    <div>
+                                        <p>Altura</p>
+                                        <p>Min: {height[0]} cm</p>
+                                        <p>Max: {height[1]} cm</p>
+                                    </div>
+                                    <div>
                                     <p>Años de Vida</p>
                                     <p>{d.yearsOfLife}</p>
+                                </div>
+                                </div>
+                                <div className="cardDetail_temperaments">
+                                    <h4>Temperamentos</h4>
+                                    <div>
+                                        {d.temperament?.map(t=>{
+                                            return (
+                                                <p>{t}</p>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
                             </div>
                         </div>

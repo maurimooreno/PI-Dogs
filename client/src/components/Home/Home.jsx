@@ -32,47 +32,19 @@ export default function Home(){
     useEffect(()=>{
         let ordenados = dogs
         if(order === 'asc'){
-            ordenados.sort((a,b)=>{
-                if(a.name.toLowerCase() > b.name.toLowerCase()){
-                    return -1
-                }
-                if(a.name.toLowerCase() < b.name.toLowerCase()){
-                    return 1
-                }
-                return 0;
-            })
+            ordenados.sort((a,b)=>
+                a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
         }else if(order === 'desc'){
-            ordenados.sort((a,b)=>{
-                if(a.name.toLowerCase() > b.name.toLowerCase()){
-                    return 1
-                }
-                if(a.name.toLowerCase() < b.name.toLowerCase()){
-                    return -1
-                }
-                return 0;
-            })
+            ordenados.sort((a,b)=>
+                a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
         }else if(order === 'mayor'){
-            ordenados.sort((a,b)=>{
-                if(a.weight[1] > b.weight[1]){
-                    return 1
-                }
-                if(a.weight[1] < b.weight[1]){
-                    return -1
-                }
-                return 0;
-            })
+            ordenados.sort((a,b)=>
+                a.weight[1] > b.weight[1] ? -1 : 1)
         }else if(order === 'menor'){
-            ordenados.sort((a,b)=>{
-                if(a.weight[0] > b.weight[0]){
-                    return -1
-                }
-                if(a.weight[0] < b.weight[0]){
-                    return 1
-                }
-                return 0;
-            })
+            ordenados.sort((a,b)=>
+                a.weight[0] > b.weight[0] ? 1 : -1)
         }else if(!order){
-            ordenados = dogs
+            ordenados = dogs;
         }
         setDogsDisplay(ordenados)
         paginado(1);
