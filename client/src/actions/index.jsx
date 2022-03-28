@@ -12,7 +12,7 @@ export function getDogs(payload){
 
 export function getTemperaments(payload){
     return async function(dispatch){
-        let temperaments = await axios.get('http://localhost:3001/temperament/')
+        let temperaments = await axios.get('http://localhost:3001/temperaments/')
         return dispatch({
             type: 'GET_TEMPERAMENTS',
             payload: temperaments.data

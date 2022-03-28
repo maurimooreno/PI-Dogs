@@ -27,8 +27,8 @@ export default function CardDetail(){
                 let height = d.height.map(h=>Number(h))
                 
                 return (
-                    <div className="card_container">
-                        <div key={d.id} className='cardDetail_container'>
+                    <div className="card_container" key={d.id}>
+                        <div className='cardDetail_container'>
                             <div className="cardDetail_header">
                                 <Link to={'/home'}>
                                     <button>Volver a Home</button>
@@ -60,7 +60,7 @@ export default function CardDetail(){
                                     <div>
                                         {d.temperament?.map(t=>{
                                             return (
-                                                <p>{t}</p>
+                                                <p key={t}>{t}</p>
                                             )
                                         })}
                                     </div>
