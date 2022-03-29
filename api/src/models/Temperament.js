@@ -8,6 +8,10 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: { msg: "Cannot be null" },
+        notEmpty: true,
+      }
     }
   });
 };

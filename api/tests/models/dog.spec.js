@@ -9,14 +9,21 @@ describe('Dog model', () => {
   describe('Validators', () => {
     beforeEach(() => Dog.sync({ force: true }));
     describe('name', () => {
-      it('should throw an error if name is null', (done) => {
+      it('Deberia arrojar un error si es null', () => {
         Dog.create({})
-          .then(() => done(new Error('It requires a valid name')))
-          .catch(() => done());
+          .then(()=> {throw "Cannot be null"})
+          .catch(e => expect(e.errors[0].path).to.equal('name'))
       });
-      it('should work when its a valid name', () => {
-        Dog.create({ name: 'Pug' });
-      });
+      it('Deberia funcionar si se le pasa un valor valido', () =>{
+        Dog.create({ name: 'pugTesting'})
+      })
     });
+    describe('id', () =>{
+      it('Deberia arrojar un error si es null', () => {
+        Dog.create({})
+          .then(()=> {throw "Cannot be null"})
+          .catch(e => expect(e.errors[0].path).to.equal('id'))
+      });
+    })
   });
 });
