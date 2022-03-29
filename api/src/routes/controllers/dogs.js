@@ -12,15 +12,22 @@ const getApiDogs = async () => {
             temp = dog.temperament.split(/ |, |,/)
         }
         temp = temp?.map(t => t)
-        let peso = dog.weight.metric.split('-')
-        let altura = dog.height.metric.split('-')
-
+        let pesoImperial = dog.weight.imperial.split(' - ')
+        let pesoMetrico = [
+            Math.round(0.45 * Number(pesoImperial[0])),
+            Math.round(0.45 * Number(pesoImperial[1]))
+        ]
+        let alturaImperial = dog.height.imperial.split(' - ')
+        let alturaMetrica = [
+            Math.round(2.54 * Number(alturaImperial[0])),
+            Math.round(2.54 * Number(alturaImperial[1]))
+        ]
         return {
             id: dog.id, 
             name: dog.name,
             image: dog.image.url,
-            weight: peso,
-            height: altura,
+            weight: pesoMetrico,
+            height: alturaMetrica,
             yearsOfLife: dog.life_span,
             temperament: temp
         }

@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
         let name = req.query.name;
         if(name){
             let dog = await getDog(name);
-            dog.length > 0 ? res.status(200).json(dog) : res.status(404).json([])
+            dog.length > 0 ? res.status(200).json(dog) : res.status(404).send({error: 'No se encontro ninguna raza con ese nombre'})
         }else{
             let allDogs = await getAllDogs();
             res.status(200).json(allDogs);
