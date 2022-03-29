@@ -1,0 +1,17 @@
+.error_container{
+    height: 657px;
+    background-image: url('../../Assets/img/error404.jpg');
+}
+
+.error_container button{
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+
+.error_container button:hover{
+    color: black;
+    background-color: white;
+}

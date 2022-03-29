@@ -8,7 +8,7 @@ import { findDogs } from "../../actions/index.jsx";
 export default function SearchBar (){
     const dispatch = useDispatch();
 
-    const [raza, setRaza] = useState([])
+    const [raza, setRaza] = useState('')
     const handleChange = (e) =>{
         e.preventDefault();
         setRaza(e.target.value)

@@ -15,7 +15,7 @@ export default function Home(){
 
     const dispatch = useDispatch();
     const dogs = useSelector(state => state.dogs);
-    const order = useSelector(state => state.order)
+    const order = useSelector(state => state.order);
 
     const [dogsDisplay, setDogsDisplay] = useState([])
 
@@ -29,26 +29,10 @@ export default function Home(){
         paginado(1);
     },[dogs])
 
-    useEffect(()=>{
-        let ordenados = dogs
-        if(order === 'asc'){
-            ordenados.sort((a,b)=>
-                a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-        }else if(order === 'desc'){
-            ordenados.sort((a,b)=>
-                a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
-        }else if(order === 'mayor'){
-            ordenados.sort((a,b)=>
-                a.weight[1] > b.weight[1] ? -1 : 1)
-        }else if(order === 'menor'){
-            ordenados.sort((a,b)=>
-                a.weight[0] > b.weight[0] ? 1 : -1)
-        }else if(!order){
-            ordenados = dogs;
-        }
-        setDogsDisplay(ordenados)
-        paginado(1);
-    }, [order, dogs])
+    useEffect(() => {
+        paginado(1)
+    }, [order])
+
 
     //paginado
     const [pageCurrent, setPageCurrent] = useState(1)

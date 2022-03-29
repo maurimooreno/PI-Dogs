@@ -22,7 +22,7 @@ export function getTemperaments(payload){
 
 export function addDog(payload){
     return async function(dispatch){
-        await axios.post('http://localhost:3001/dog', payload)
+        await axios.post('http://localhost:3001/dogs', payload)
         return dispatch({
             type: 'ADD_DOG'
         })
@@ -30,22 +30,43 @@ export function addDog(payload){
 }
 
 export function findDogs(payload){
+    // return function (dispatch){
+    //     axios.get(`http://localhost:3001/dogs/?name=${payload}`)
+    //         .then((dogs) =>{
+    //             return dispatch({
+    //                 type: 'FIND_DOGS',
+    //                 payload: dogs.data
+    //             })
+    //         })
+    //         .catch((error) =>{
+    //             alert('No se encontraron razas con ese nombre')
+    //         })
+    // }
     return async function(dispatch){
-        let dogs = await axios.get(`http://localhost:3001/dogs/?name=${payload}`)
-        return dispatch({
-            type: 'FIND_DOGS',
-            payload: dogs.data
-        })
+        try {
+            let dogs = await axios.get(`http://localhost:3001/dogs/?name=${payload}`)
+            return dispatch({
+                type: 'FIND_DOGS',
+                payload: dogs.data
+            })
+        } catch (error) {
+            console.log(error)
+            alert('No se encontraron razas con ese nombre')
+        }
     }
 }
 
 export function getById(payload){
     return async function(dispatch){
-        let dog = await axios.get(`http://localhost:3001/dogs/${payload}`)
-        return dispatch({
-            type: 'GET_BY_ID',
-            payload: dog.data
-        })
+        try {
+            let dog = await axios.get(`http://localhost:3001/dogs/${payload}`)
+            return dispatch({
+                type: 'GET_BY_ID',
+                payload: dog.data
+            })
+        } catch (error) {
+            alert('No se ha encontrado ninguna raza con ese  ID')
+        }
     }
 }
 

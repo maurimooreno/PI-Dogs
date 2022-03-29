@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './NavBar.css'
 import icon_nav from '../../Assets/img/icon_nav.png'
 import icon_addDog from '../../Assets/img/add_Dog.png'
@@ -7,11 +7,10 @@ import icon_addDog from '../../Assets/img/add_Dog.png'
 import SearchBar from "../SearchBar/SearchBar";
 
 export default function NavBar(){
-    const history = useHistory();
 
     const redirectHome = (e) =>{
         e.preventDefault();
-        history.push('/')
+        window.location.reload(false)
     }
     return(
         <div className="nav_container">

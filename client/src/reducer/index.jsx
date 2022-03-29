@@ -2,7 +2,7 @@ const initialState = {
     dogs: [],
     dogsFiltered: [],
     temperaments: [],
-    order: '',
+    order: ''
 };
 
 export default function rootReducer (state=initialState, action) {
@@ -56,8 +56,26 @@ export default function rootReducer (state=initialState, action) {
                 dogs: filteredTemp
             }
         case 'ORDER_BY':
+            const dogsOrder = state.dogsFiltered
+            let ordenados = dogsOrder
+            if(action.payload === 'asc'){
+                ordenados.sort((a,b)=>
+                    a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+            }else if(action.payload === 'desc'){
+                ordenados.sort((a,b)=>
+                    a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
+            }else if(action.payload === 'mayor'){
+                ordenados.sort((a,b)=>
+                    a.weight[1] < b.weight[1] ? 1 : -1)
+            }else if(action.payload === 'menor'){
+                ordenados.sort((a,b)=>
+                    a.weight[0] > b.weight[0] ? 1 : -1)
+            }else if(action.payload === 'none'){
+                ordenados = dogsOrder;
+            }
             return{
                 ...state,
+                dogs: ordenados,
                 order: action.payload
             }
         default:
