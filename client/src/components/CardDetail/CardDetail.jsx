@@ -36,7 +36,7 @@ export default function CardDetail(){
                                 <div>
                                     <h3>{d.name}</h3>
                                 </div>
-                                <img src={d.image} alt="Imagen not fount"/>
+                                <img src={d.image} alt="Imagen not fount"   />
                             </div>
                             <div className="cardDetail_body">
                                 <div className="cardDetail_data">

@@ -56,7 +56,7 @@ export default function rootReducer (state=initialState, action) {
                 dogs: filteredTemp
             }
         case 'ORDER_BY':
-            const dogsOrder = state.dogsFiltered
+            const dogsOrder = state.dogs
             let ordenados = dogsOrder
             if(action.payload === 'asc'){
                 ordenados.sort((a,b)=>

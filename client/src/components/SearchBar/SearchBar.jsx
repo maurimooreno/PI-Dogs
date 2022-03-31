@@ -15,8 +15,12 @@ export default function SearchBar (){
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(findDogs(raza))
-        setRaza('');
+        if(raza !== ''){
+            dispatch(findDogs(raza))
+            setRaza('');
+        }else{
+            alert('Por favor ingrese un valor antes de buscar')
+        }
     }
     
     return(

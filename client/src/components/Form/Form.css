@@ -57,6 +57,7 @@
 .input input{
     background-color: transparent;
     color: rgb(224, 224, 224);
+    width: 125px;
     margin-left: 15px;
     border: none;
     outline: none;
@@ -92,3 +93,11 @@
     background-color: rgba(177, 82, 82, 0.7);
     height: 20px;
 }
+
+/* .inputHeight{
+    border: 2px solid black;
+}
+
+.inputHeight input{
+    width: 125px;
+} */

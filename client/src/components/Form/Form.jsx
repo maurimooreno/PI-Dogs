@@ -29,16 +29,16 @@ const validate = (dog) =>{
     if(dog.dogName && !regExName.test(dog.dogName)){
         error.dogName = 'No se incluir caracteres especiales en el nombre'
     }
-    if((dog.weightMin || dog.weightMax) && dog.weightMin >= dog.weightMax){
+    if((dog.weightMin || dog.weightMax) && Number(dog.weightMin) >= Number(dog.weightMax)){
         error.weight = 'El peso minimo no puede superar a su peso maximo'
     }
-    if((dog.heightMin || dog.heightMax) && dog.heightMin >= dog.heightMax){
+    if((dog.heightMin || dog.heightMax) && Number(dog.heightMin) >= Number(dog.heightMax)){
         error.height = 'La altura minima no puede superar a su altura maxima'
     }
     if(dog.image && !regExImgUrl.test(dog.image)){
         error.image = 'La imagen URL ingresada no es valida'
     }
-    if((dog.yearsMin || dog.yearsMax) && dog.yearsMin >= dog.yearsMax){
+    if((dog.yearsMin || dog.yearsMax) && Number(dog.yearsMin) >= Number(dog.yearsMax)){
         error.years = 'Los años minimos no pueden superar a sus maximos'
     }
 
@@ -90,7 +90,7 @@ export default function Form(){
                 name: fromState.dogName,
                 height: [].concat(fromState.heightMin,fromState.heightMax),
                 weight: [].concat(fromState.weightMin,fromState.weightMax),
-                yearsOfLife: [].concat(fromState.yearsMin,fromState.yearsMax),
+                yearsOfLife: fromState.yearsMin.concat(' - ',fromState.yearsMax, ' years'),
                 image: fromState.image,
                 temperament: fromState.temperament
             }
@@ -116,38 +116,38 @@ export default function Form(){
                     <div className='form_item'>
                         <label htmlFor="name">Nombre: </label><br></br>
                         <div className='input'>
-                            <input type="text" name='dogName' placeholder='Ingrese un nombre' onChange={handleChangeInput} required/><br></br>
+                            <input type="text" name='dogName' placeholder='ingrese un nombre' onChange={handleChangeInput} required/><br></br>
                         </div>
                         {error.dogName && <p className='errorDanger'>{error.dogName}</p>}
                     </div>
                     <div className='form_item'>
                         <label htmlFor="height">Altura: </label><br></br>
                         <div className='input'>
-                            <input type="number" name='heightMin' placeholder='Ingrese altura min' onChange={handleChangeInput}  max='129' required/><br></br>
-                            <input type="number" name='heightMax' placeholder='Ingrese altura max' onChange={handleChangeInput}  max='130' required/><br></br>
+                            <input type="number" name='heightMin' placeholder='altura min' onChange={handleChangeInput}  max='129' min='1' required/><br></br>
+                            <input type="number" name='heightMax' placeholder='altura max' onChange={handleChangeInput}  max='130' min='1' required/><br></br>
                         </div>
                         {error.height  && <p className='errorDanger'>{error.height}</p>}
                     </div>
                     <div className='form_item'>
                         <label htmlFor="weight">Peso: </label><br></br>
                         <div className='input'>
-                            <input type="number" name='weightMin' placeholder='Ingrese peso min' onChange={handleChangeInput} max='114' required/><br></br>
-                            <input type="number" name='weightMax' placeholder='Ingrese peso max' onChange={handleChangeInput} max='115' required/><br></br>
+                            <input type="number" name='weightMin' placeholder='peso min' onChange={handleChangeInput} max='114' min='1' required/><br></br>
+                            <input type="number" name='weightMax' placeholder='peso max' onChange={handleChangeInput} max='115' min='1' required/><br></br>
                         </div>
                         {error.weight  && <p className='errorDanger'>{error.weight}</p>}
                     </div>
                     <div className='form_item'>
                         <label htmlFor="yearsOfLife">Años de vida: </label><br></br>
                         <div className='input'>
-                            <input type="number" name='yearsMin' placeholder='Ingrese años de vida min' onChange={handleChangeInput} max='29'/><br></br>
-                            <input type="number" name='yearsMax' placeholder='Ingrese años de vida max' onChange={handleChangeInput} max='30'/><br></br>
+                            <input type="number" name='yearsMin' placeholder='años de vida min' onChange={handleChangeInput} max='29' min='1'/><br></br>
+                            <input type="number" name='yearsMax' placeholder='años de vida max' onChange={handleChangeInput} max='30' min='1'/><br></br>
                         </div>
                         {error.years  && <p className='errorDanger'>{error.years}</p>}
                     </div>
                     <div className='form_item'>
                         <label htmlFor="name">Imagen: </label><br></br>
                         <div className='input'>
-                            <input type="url" name='image' placeholder='Ingrese la url de una img' onChange={handleChangeInput} required/><br></br>
+                            <input type="url" name='image' placeholder='ingrese una img' onChange={handleChangeInput} required/><br></br>
                         </div>
                         {error.image  && <p className='errorDanger'>{error.image}</p>}
                     </div>

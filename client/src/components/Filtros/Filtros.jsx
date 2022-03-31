@@ -22,7 +22,7 @@ export default function Filtros() {
     return(
         <div className="filtros_container">
             <select onChange={handleFilterByTemperament}>
-                <option value="all">all</option>
+                <option value="all">Todos</option>
                 {temperamentsOrdenados.map((t, i) => {
                     return (
                         <option key={i} value={t}>{t}</option>
@@ -30,9 +30,9 @@ export default function Filtros() {
                 })}
             </select>
             <select onChange={handleFilterByCreation}>
-                <option value="all">all</option>
-                <option value="created">created</option>
-                <option value="api">api</option>
+                <option value="all">Todos</option>
+                <option value="created">Creados</option>
+                <option value="api">Api</option>
             </select>
         </div>
     )

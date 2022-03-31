@@ -30,18 +30,6 @@ export function addDog(payload){
 }
 
 export function findDogs(payload){
-    // return function (dispatch){
-    //     axios.get(`http://localhost:3001/dogs/?name=${payload}`)
-    //         .then((dogs) =>{
-    //             return dispatch({
-    //                 type: 'FIND_DOGS',
-    //                 payload: dogs.data
-    //             })
-    //         })
-    //         .catch((error) =>{
-    //             alert('No se encontraron razas con ese nombre')
-    //         })
-    // }
     return async function(dispatch){
         try {
             let dogs = await axios.get(`http://localhost:3001/dogs/?name=${payload}`)
