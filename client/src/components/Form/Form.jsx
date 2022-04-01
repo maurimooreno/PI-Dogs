@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Form.css'
 
-import { addDog } from '../../actions/index.jsx';
+import { addDog, getDogs, getTemperaments } from '../../actions/index.jsx';
 
 const validate = (dog) =>{
     let error = {}
@@ -50,6 +50,12 @@ export default function Form(){
     const history = useHistory()
     const dispatch = useDispatch()
     const temperaments = useSelector(state => state.temperaments)
+    const dogs = useSelector(state => state.dogs)
+
+    useEffect(() => {
+        dispatch(getDogs())
+        dispatch(getTemperaments())
+    }, [dispatch])
 
     const [fromState, setFormState] = useState({
         dogName: '',
@@ -94,9 +100,16 @@ export default function Form(){
                 image: fromState.image,
                 temperament: fromState.temperament
             }
-            dispatch(addDog(body))
-            alert('Perro agregado con exito');
-            history.push('/home')
+            let find = dogs.filter(d => d.name.toLowerCase() === body.name.toLowerCase())
+            console.log(find)
+            if(find.length){
+                alert('La raza que intentas agregar ya existe')
+                window.location.reload()
+            }else{
+                dispatch(addDog(body))
+                alert('Perro agregado con exito');
+                history.push('/home')
+            }
         }else{
             alert('El formulario que intentas enviar presenta errores')
         }
