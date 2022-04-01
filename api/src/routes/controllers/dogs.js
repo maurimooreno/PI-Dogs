@@ -12,7 +12,7 @@ const getApiDogs = async () => {
             temp = dog.temperament.split(/ |, |,/)
         }
         temp = temp?.map(t => t)
-        let pesoImperial = dog.weight.imperial.split(' - ')
+        let pesoImperial = dog.weight.imperial.split([' - '])
         let pesoMetrico = [
             Math.round(0.45 * Number(pesoImperial[0])),
             Math.round(0.45 * Number(pesoImperial[1]))
@@ -79,7 +79,6 @@ const addDog = async (name, image, weight, height, yearsOfLife, temperament) => 
         let temperamentDB = await Temperament.findOne({where : {name : el}})
         newDog.addTemperament(temperamentDB);
     };
-    console.log(newDog.dataValues)
     return newDog;
 }
 
