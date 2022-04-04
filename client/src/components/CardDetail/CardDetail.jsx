@@ -17,6 +17,7 @@ export default function CardDetail(){
         dispatch(getById(id))
     }, [dispatch, id])
 
+    console.log(dog)
     return (
         <div>
         { dog.length > 1 ?
